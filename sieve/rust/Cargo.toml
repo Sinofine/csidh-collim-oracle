@@ -1,0 +1,14 @@
+[package]
+name = "collimation-sieve-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Supplementary deterministic Rust implementation of binary and four-ary collimation sieves"
+license = "BSD-3-Clause"
+authors = ["Collimation Sieve artifact contributors"]
+keywords = ["cryptography", "csidh", "collimation-sieve"]
+categories = ["cryptography", "science"]
+publish = false
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

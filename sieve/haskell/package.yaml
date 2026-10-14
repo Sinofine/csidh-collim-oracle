@@ -1,0 +1,61 @@
+name:                collimation-sieve
+version:             0.1.0.0
+license:             BSD3
+author:              "Chris Peikert and contributors"
+copyright:           "2019 Chris Peikert"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+synopsis:            Binary and four-ary collimation-sieve simulator
+category:            Cryptography
+description:         Classical simulator for binary and four-ary collimation sieves, including root-level inverse and permutation tables.
+
+dependencies:
+- base >= 4.7 && < 5
+- containers
+- vector
+- vector-th-unbox
+- massiv
+- data-dword
+- mtl
+- random
+- MonadRandom
+- crypto-api
+- monadcryptorandom
+- DRBG
+- logging-effect
+- ansi-terminal
+- timeit
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - Collimation
+  - Phase
+  - Random
+
+executables:
+  collimation-sieve-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -O2
+    - -funbox-strict-fields
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - collimation-sieve
+
+tests:
+  collimation-sieve-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - collimation-sieve

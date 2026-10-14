@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "design": "bonnetain",
+      "qubits": 44351,
+      "clean": 42441,
+      "ccx": 3174391872613000,
+      "ccx_7T_only": 22220743108291000,
+      "ccx_change_from_bonnetain": 0,
+      "ccx_change_percent": 0.0
+    },
+    {
+      "design": "revised",
+      "qubits": 42309,
+      "clean": 40399,
+      "ccx": 3177105457143800,
+      "ccx_7T_only": 22239738200006600,
+      "ccx_change_from_bonnetain": 2713584530800,
+      "ccx_change_percent": 0.0854836025196315
+    }
+  ],
+  "paper_model": {
+    "old_T": 1.0016714952525748e+16,
+    "new_T": 9737961909503954.0,
+    "reduction_percent": 2.7828788614125965
+  }
+}

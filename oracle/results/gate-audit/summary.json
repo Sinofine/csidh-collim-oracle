@@ -1,0 +1,98 @@
+{
+  "outer_calls": {
+    "M": 1300,
+    "signed_oop_per_inplace": 2,
+    "total_oop": 2600,
+    "character_calls_per_oop": 4
+  },
+  "character": {
+    "bonnetain_ccx": 16595793043,
+    "revised_ccx": 6612232939,
+    "bonnetain_bit_steps": 1924,
+    "bonnetain_field_calls": 5772,
+    "revised_field_calls": 2300,
+    "shared_equality_overhead_ccx": 2039,
+    "native_reduction_percent": 60.157174038820656
+  },
+  "per_oop": {
+    "character_ccx_saved": 39934240416,
+    "local_mapping_ccx_increase": 40977926774,
+    "net_ccx_increase": 1043686358
+  },
+  "full": {
+    "ccx_increase": 2713584530800,
+    "T7_increase": 18995091715600
+  },
+  "point_steps": [
+    {
+      "design": "bonnetain",
+      "component": "BonnetainPointStep",
+      "operations": [
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularProductAdd",
+          "quantity": 2,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularSquareAdd",
+          "quantity": 2,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.controlled_modular_product.ControlledModularProductAdd",
+          "quantity": 2,
+          "ccx_each": 3659265
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularSquareAdd_inv",
+          "quantity": 2,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularProductAdd_inv",
+          "quantity": 2,
+          "ccx_each": 2874883
+        }
+      ],
+      "arithmetic_calls": 10,
+      "multiplicative_ccx": 30317594,
+      "other_ccx": 78716,
+      "total_ccx": 30396310
+    },
+    {
+      "design": "revised",
+      "component": "ExplicitUnitaryWPointStep",
+      "operations": [
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularProductAdd",
+          "quantity": 4,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularSquareAdd",
+          "quantity": 2,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.controlled_modular_product.ControlledModularProductAdd",
+          "quantity": 2,
+          "ccx_each": 3659265
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularSquareAdd_inv",
+          "quantity": 2,
+          "ccx_each": 2874883
+        },
+        {
+          "class": "qarton.modular_arithmetic.modular_product.ModularProductAdd_inv",
+          "quantity": 4,
+          "ccx_each": 2874883
+        }
+      ],
+      "arithmetic_calls": 14,
+      "multiplicative_ccx": 41817126,
+      "other_ccx": 17420,
+      "total_ccx": 41834546
+    }
+  ]
+}

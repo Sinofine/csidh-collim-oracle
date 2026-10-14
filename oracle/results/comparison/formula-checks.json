@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "p": 11,
+      "degrees": [
+        3
+      ],
+      "checked": 6,
+      "excluded_zero_denominator": 0
+    },
+    {
+      "p": 19,
+      "degrees": [
+        5
+      ],
+      "checked": 12,
+      "excluded_zero_denominator": 0
+    },
+    {
+      "p": 59,
+      "degrees": [
+        3,
+        5
+      ],
+      "checked": 54,
+      "excluded_zero_denominator": 0
+    }
+  ]
+}

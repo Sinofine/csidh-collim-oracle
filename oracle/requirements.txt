@@ -1,0 +1,2 @@
+# Python >= 3.14. Pin the arithmetic framework used by the reference evidence.
+qarton @ git+https://gitlab.inria.fr/capsule/qarton.git@d0464e7d1fb516b7aaa2937342747da6ec7ccc7a

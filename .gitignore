@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+
+# Rust
+/target/
+/sieve/rust/target/
+
+# Haskell
+.stack-work/
+dist-newstyle/
+*.hi
+*.o
+*.prof
+*.hp
+
+# Local output
+*.log
+*.status
+*~
