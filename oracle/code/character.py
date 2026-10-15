@@ -1,10 +1,8 @@
 """Fixed-exponent Legendre symbol with a width-five window."""
 
 from points import UNITARY
-from qarton.binary_operations import qc_eq
 from qarton.circuit import BoolType, Circuit, memoize
 from qarton.modular_arithmetic import (
-    ModInt,
     ModIntType,
     ModularProductAdd,
     ModularSquareAdd,
@@ -37,16 +35,31 @@ def append_chain(c, x, p, width, checkpoints, root):
             args = (src, dst) if op == "square" else (src, odd[a], dst)
             c.append(g.inverse() if inverse else g, *args)
 
-    bennett(len(chain) + 1, checkpoints).bridge(
-        0,
-        len(chain) + 1,
-        checkpoints,
-        odd[a0],
-        None,
-        lambda: c.get_anc(t),
-        c.release_anc,
-        apply,
-    )
+    # Use the emitted bounded schedule: each recursive prefix may borrow its
+    # parent's still-zero destination. The former recursive allocator did not
+    # enforce this physical checkpoint bound.
+    pool = [c.get_anc(t) for _ in range(checkpoints + 1)]
+    dp = bennett(len(chain) + 1, checkpoints)
+
+    def emit(start, length, s, src, dst, free):
+        if length == 1:
+            return [(start, src, dst, False)]
+        k = dp.k[length][s]
+        if not k or not free:
+            raise ValueError("insufficient checkpoints")
+        mid, remaining = free[0], free[1:]
+        prefix = emit(start, k, s, src, mid, remaining + [dst])
+        suffix = emit(start + k, length - k, s - 1, mid, dst, remaining)
+        erase = emit(start, k, s - 1, src, mid, remaining)
+        return (
+            prefix + suffix + [(i, a, b, not inv) for i, a, b, inv in reversed(erase)]
+        )
+
+    events = emit(0, len(chain) + 1, checkpoints, odd[a0], pool[-1], pool[:-1])
+    assert len(events) == dp.b[len(chain) + 1][checkpoints]
+    for i, src, dst, inverse in events:
+        apply(i, src, None if i == len(chain) else dst, inverse)
+    c.release_anc(*pool)
     for g, args in reversed(tape):
         c.append(g.inverse(), *args)
         c.release_anc(args[-1])
@@ -63,10 +76,22 @@ class UnitaryPositiveCharacterFlag(Circuit):
         out = self.add_input_output(BoolType())
 
         def root(src):
-            f = self.get_anc(BoolType())
-            qc_eq(ModInt(1, p), src, f)
-            self.ccx(enable[0], f[0], out[0])
-            qc_eq(ModInt(1, p), src, f)
-            self.release_anc(f)
+            # Euler's criterion gives exactly 0, 1, or p-1. Since p is odd,
+            # only +1 has low bit 1. No n-bit equality circuit is necessary.
+            self.ccx(enable[0], src[0], out[0])
 
         append_chain(self, x, p, width, checkpoints, root)
+
+
+@memoize
+class UnitaryNegativeCharacterPhase(Circuit):
+    """Clean phase (-1)^[chi(x)=-1], including chi(0)=0.
+
+    The high bit distinguishes p-1 from both 0 and 1 on the reachable output
+    domain. The terminal marker is Clifford; no TM is charged to this Z.
+    """
+
+    def __init__(self, p, width=5, checkpoints=44):
+        super().__init__()
+        x = self.add_input_output(ModIntType(p))
+        append_chain(self, x, p, width, checkpoints, lambda y: self.z(y[-1]))

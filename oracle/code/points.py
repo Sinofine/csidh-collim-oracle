@@ -16,15 +16,39 @@ from qarton.modular_arithmetic import (
     ModularProductAdd,
     ModularSquareAdd,
 )
-from qarton.modular_arithmetic.controlled_modular_product import (
-    ControlledModularProductAdd,
-)
+from qarton.modular_arithmetic.modular_neg import ModularNeg
 
 UNITARY = MemoryConstraint(
     None,
     priority=PriorityBackends(FakeAndGate, CDKMComparatorAdder),
     exclude=PriorityBackends(MSR, AndGate, AndGateDecomposed),
 )
+
+
+@memoize
+class MaskedProductIntoZero(Circuit):
+    """Coherent enabled product, with a zero target on every branch.
+
+    Select 0 or x with 2n CCX, using the ordinary zero-target multiplier.
+    In particular this is NOT a general modular multiply-accumulate circuit.
+    The inverse accepts the computed product and returns that target to zero.
+    """
+
+    def __init__(self, p, borrowed=False):
+        super().__init__()
+        f = self.add_input_output(BoolType())
+        t = ModIntType(p)
+        x, y, out = [self.add_input_output(t) for _ in range(3)]
+        masked = self.add_input_output(t) if borrowed else self.get_anc(t)
+        for a, b in zip(x, masked):
+            self.ccx(f[0], a, b)
+        self.append(
+            ModularProductAdd(p, zero_input=True, backends=UNITARY), masked, y, out
+        )
+        for a, b in zip(x, masked):
+            self.ccx(f[0], a, b)
+        if not borrowed:
+            self.release_anc(masked)
 
 
 @memoize
@@ -44,35 +68,55 @@ class ExplicitUnitaryWPointStep(Circuit):
             )
         f = self.get_anc(BoolType())
         qc_lt_uint(UInt(2 * index + 1), ell, f)
-        # On disabled branches initialize output to unchanged current pair.
-        self.x(f[0])
-        for src, out in [(W, OW), (Z, OZ)]:
-            for a, b in zip(src, out):
-                self.ccx(f[0], a, b)
-        self.x(f[0])
         a, b = [self.get_anc(t) for _ in range(2)]
         # OPW remains zero until its final copy: borrow it for the square temporary.
         c = OPW
         mul = ModularProductAdd(p, zero_input=True, backends=UNITARY)
         sq = ModularSquareAdd(p, zero_input=True, backends=UNITARY)
         add = ModularAdder(p, backends=UNITARY)
-        # General accumulator required: disabled outputs need not be zero.
-        cmul = ControlledModularProductAdd(p, zero_input=False, backends=UNITARY)
+        neg = ModularNeg(p, backends=UNITARY)
+        cmul = MaskedProductIntoZero(p, borrowed=True)
 
-        def coordinate(x, y, u, v, scale, out):
-            self.append(mul, x, y, a)
-            self.append(mul, u, v, b)
-            self.append(add.inverse(), b, a)
-            self.append(sq, a, c)
-            self.append(cmul, f, scale, c, out)
-            self.append(sq.inverse(), a, c)
-            self.append(add, b, a)
-            self.append(mul.inverse(), u, v, b)
-            self.append(mul.inverse(), x, y, a)
+        def reflect(src, dst):
+            self.append(neg, dst)
+            self.append(add, src, dst)
+            self.append(add, src, dst)
 
-        coordinate(W, QZ, QW, Z, PZ, OW)
-        coordinate(W, QW, Z, QZ, PW, OZ)
+        # a=(W-Z)(QW+QZ), b=(W+Z)(QW-QZ).
+        # a-b=2(W*QZ-Z*QW), a+b=2(W*QW-Z*QZ).
+        # Common factor 4 cancels in the projective output. All temporary
+        # changes to the source/kernel coordinates are explicitly restored.
+        self.append(neg, Z)
+        self.append(add, W, Z)
+        self.append(add, QW, QZ)
+        self.append(mul, Z, QZ, a)
+        reflect(W, Z)
+        reflect(QW, QZ)
+        self.append(mul, Z, QZ, b)
+        self.append(add, a, b)
+        self.append(sq, b, c)
+        self.append(cmul, f, PW, c, OZ, OPZ)
+        self.append(sq.inverse(), b, c)
+        self.append(add.inverse(), a, b)
+        self.append(add.inverse(), a, b)
+        self.append(sq, b, c)
+        self.append(cmul, f, PZ, c, OW, OPZ)
+        self.append(sq.inverse(), b, c)
+        self.append(add, a, b)
+        self.append(mul.inverse(), Z, QZ, b)
+        reflect(W, Z)
+        reflect(QW, QZ)
+        self.append(mul.inverse(), Z, QZ, a)
+        self.append(add.inverse(), QW, QZ)
+        self.append(neg, Z)
+        self.append(add, W, Z)
         self.release_anc(a, b)
+        # Fill inactive outputs only AFTER the zero-target products.
+        self.x(f[0])
+        for src, out in [(W, OW), (Z, OZ)]:
+            for a, b in zip(src, out):
+                self.ccx(f[0], a, b)
+        self.x(f[0])
         # Copy previous coordinates selected from old/current pair.
         for old, new, out in [(PW, W, OPW), (PZ, Z, OPZ)]:
             self.cx_reg(old, out)

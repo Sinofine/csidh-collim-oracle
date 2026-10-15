@@ -23,7 +23,7 @@ python scripts/construct_oracle.py --design revised
 python scripts/compare_designs.py
 ```
 
-Recorded results are in `oracle/results/`. The current constructions use 44,351 and 42,309 qubits respectively. They do not yet reproduce the papers' resource estimates; see the [oracle README](oracle/README.md) for the accounting differences.
+Recorded results are in `oracle/results/`. The current constructions use 44,351 and 42,814 qubits respectively. They do not yet reproduce the papers' resource estimates; see the [oracle README](oracle/README.md) for the accounting differences.
 
 ## Haskell sieve
 

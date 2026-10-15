@@ -1,0 +1,368 @@
+{
+  "tests": [
+    {
+      "test": "flag_p11",
+      "branches": 44,
+      "squared_state_error": 8.008574974539219e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 8.008574974539219e-30,
+      "basic_operations": 7181,
+      "output_norm_squared": 0.9999999999999983,
+      "resources": {
+        "qubits": 32,
+        "classical_bits": 0,
+        "ccx": 2317,
+        "native_t": 16219,
+        "cx": 3784,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 16219,
+        "primitives": {
+          "cx": 3784,
+          "ccx": 2317,
+          "x": 888
+        }
+      },
+      "seconds": 0.22904983299667947
+    },
+    {
+      "test": "phase_p11",
+      "branches": 11,
+      "squared_state_error": 2.6079137747569085e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 2.6079137747569085e-30,
+      "basic_operations": 7181,
+      "output_norm_squared": 0.9999999999999996,
+      "resources": {
+        "qubits": 30,
+        "classical_bits": 0,
+        "ccx": 2316,
+        "native_t": 16212,
+        "cx": 3784,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 16212,
+        "primitives": {
+          "cx": 3784,
+          "ccx": 2316,
+          "x": 888
+        }
+      },
+      "seconds": 0.14179280899406876
+    },
+    {
+      "test": "masked_product_p11",
+      "branches": 242,
+      "squared_state_error": 4.196167332354766e-29,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 4.196167332354766e-29,
+      "basic_operations": 609,
+      "output_norm_squared": 0.9999999999999999,
+      "resources": {
+        "qubits": 26,
+        "classical_bits": 0,
+        "ccx": 201,
+        "native_t": 1407,
+        "cx": 310,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 1407,
+        "primitives": {
+          "ccx": 201,
+          "cx": 310,
+          "x": 74
+        }
+      },
+      "seconds": 0.07644890999654308
+    },
+    {
+      "test": "w_point_p11",
+      "branches": 12,
+      "squared_state_error": 1.5346201001397449e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.5346201001397449e-30,
+      "basic_operations": 7982,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 66,
+        "classical_bits": 0,
+        "ccx": 2556,
+        "native_t": 17892,
+        "cx": 4140,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 17892,
+        "primitives": {
+          "x": 1094,
+          "cx": 4140,
+          "ccx": 2556
+        }
+      },
+      "seconds": 0.147302479002974
+    },
+    {
+      "test": "montgomery_point_p11",
+      "branches": 12,
+      "squared_state_error": 1.5346201001397449e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.5346201001397449e-30,
+      "basic_operations": 7982,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 66,
+        "classical_bits": 0,
+        "ccx": 2556,
+        "native_t": 17892,
+        "cx": 4140,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 17892,
+        "primitives": {
+          "x": 1094,
+          "cx": 4140,
+          "ccx": 2556
+        }
+      },
+      "seconds": 0.1471707820019219
+    },
+    {
+      "test": "flag_p59",
+      "branches": 28,
+      "squared_state_error": 3.717806136848506e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 3.717806136848506e-30,
+      "basic_operations": 18163,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 62,
+        "classical_bits": 0,
+        "ccx": 5923,
+        "native_t": 41461,
+        "cx": 9648,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 41461,
+        "primitives": {
+          "cx": 9648,
+          "ccx": 5923,
+          "x": 1932
+        }
+      },
+      "seconds": 0.43729233399790246
+    },
+    {
+      "test": "phase_p59",
+      "branches": 7,
+      "squared_state_error": 1.473556083840517e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.473556083840517e-30,
+      "basic_operations": 18163,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 60,
+        "classical_bits": 0,
+        "ccx": 5922,
+        "native_t": 41454,
+        "cx": 9648,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 41454,
+        "primitives": {
+          "cx": 9648,
+          "ccx": 5922,
+          "x": 1932
+        }
+      },
+      "seconds": 0.26609915000153705
+    },
+    {
+      "test": "masked_product_p59",
+      "branches": 30,
+      "squared_state_error": 4.522069215409924e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 4.522069215409924e-30,
+      "basic_operations": 1317,
+      "output_norm_squared": 0.9999999999999992,
+      "resources": {
+        "qubits": 36,
+        "classical_bits": 0,
+        "ccx": 435,
+        "native_t": 3045,
+        "cx": 684,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 3045,
+        "primitives": {
+          "ccx": 435,
+          "cx": 684,
+          "x": 138
+        }
+      },
+      "seconds": 0.03429406999202911
+    },
+    {
+      "test": "w_point_p59",
+      "branches": 12,
+      "squared_state_error": 1.5346201001397449e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.5346201001397449e-30,
+      "basic_operations": 15954,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 94,
+        "classical_bits": 0,
+        "ccx": 5172,
+        "native_t": 36204,
+        "cx": 8456,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 36204,
+        "primitives": {
+          "x": 1846,
+          "cx": 8456,
+          "ccx": 5172
+        }
+      },
+      "seconds": 0.2871005269989837
+    },
+    {
+      "test": "montgomery_point_p59",
+      "branches": 12,
+      "squared_state_error": 1.5346201001397449e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.5346201001397449e-30,
+      "basic_operations": 15954,
+      "output_norm_squared": 1.0000000000000002,
+      "resources": {
+        "qubits": 94,
+        "classical_bits": 0,
+        "ccx": 5172,
+        "native_t": 36204,
+        "cx": 8456,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 36204,
+        "primitives": {
+          "x": 1846,
+          "cx": 8456,
+          "ccx": 5172
+        }
+      },
+      "seconds": 0.2877582000073744
+    },
+    {
+      "test": "kernel_adapter_p11",
+      "branches": 8,
+      "squared_state_error": 1.4607967979589517e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 1.4607967979589517e-30,
+      "basic_operations": 107586,
+      "output_norm_squared": 0.9999999999999999,
+      "resources": {
+        "qubits": 96,
+        "classical_bits": 0,
+        "ccx": 34062,
+        "native_t": 238434,
+        "cx": 55656,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 238434,
+        "primitives": {
+          "cx": 55656,
+          "ccx": 34062,
+          "x": 12716
+        }
+      },
+      "seconds": 1.7471216339909006
+    },
+    {
+      "test": "kernel_adapter_p59",
+      "branches": 16,
+      "squared_state_error": 2.9778608429493917e-30,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 2.9778608429493917e-30,
+      "basic_operations": 414908,
+      "output_norm_squared": 0.9999999999999991,
+      "resources": {
+        "qubits": 183,
+        "classical_bits": 0,
+        "ccx": 133518,
+        "native_t": 934626,
+        "cx": 218334,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 934626,
+        "primitives": {
+          "cx": 218334,
+          "ccx": 133518,
+          "x": 41024
+        }
+      },
+      "seconds": 8.234286535007413
+    },
+    {
+      "test": "kernel_adapter_p419",
+      "branches": 2,
+      "squared_state_error": 3.520599938339867e-31,
+      "nonzero_workspace_probability": 0,
+      "inverse_squared_error": 3.520599938339867e-31,
+      "basic_operations": 1274871,
+      "output_norm_squared": 0.9999999999999998,
+      "resources": {
+        "qubits": 270,
+        "classical_bits": 0,
+        "ccx": 402856,
+        "native_t": 2819992,
+        "cx": 658163,
+        "unresolved_phase_gates": {
+          "Phase": 0,
+          "CPhase": 0,
+          "GPhase": 0
+        },
+        "ccx_7T_conversion_only": 2819992,
+        "primitives": {
+          "cx": 658163,
+          "ccx": 402856,
+          "x": 141888
+        }
+      },
+      "seconds": 15.993565730997943
+    }
+  ]
+}

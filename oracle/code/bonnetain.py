@@ -5,20 +5,15 @@ Reference: ePrint 2018/537, Sections 5.1--5.3 and Appendix B.3."""
 from expressions import Expr
 from isogeny import UnitaryPowerStep, UnitaryVisitingPower
 from parameters import P512
-from points import UNITARY, UnitaryInitialExpression
+from points import UNITARY, MaskedProductIntoZero, UnitaryInitialExpression
 from qarton.arithmetic import qc_lt_uint
-from qarton.binary_operations import qc_eq
 from qarton.circuit import BoolType, Circuit, UInt, UIntType, memoize
 from qarton.modular_arithmetic import (
-    ModInt,
     ModIntType,
     ModularAdder,
     ModularInverseAdd,
     ModularProductAdd,
     ModularSquareAdd,
-)
-from qarton.modular_arithmetic.controlled_modular_product import (
-    ControlledModularProductAdd,
 )
 from qarton.modular_arithmetic.modular_double import ModularDouble
 from qarton.modular_arithmetic.modular_inverse import (
@@ -94,11 +89,8 @@ class BonnetainPositiveCharacterFlag(Circuit):
         out = self.add_input_output(BoolType())
 
         def root(value):
-            f = self.get_anc(BoolType())
-            qc_eq(ModInt(1, p), value, f)
-            self.ccx(enable[0], f[0], out[0])
-            qc_eq(ModInt(1, p), value, f)
-            self.release_anc(f)
+            # Apply the same reachable-domain bit test to both comparators.
+            self.ccx(enable[0], value[0], out[0])
 
         append_binary_character(self, x, p, width, checkpoints, root)
 
@@ -128,18 +120,13 @@ class BonnetainPointStep(Circuit):
             return
         f = self.get_anc(BoolType())
         qc_lt_uint(UInt(2 * index + 1), ell, f)
-        self.x(f[0])
-        for src, target in [(X, OX), (Z, OZ)]:
-            for a, b in zip(src, target):
-                self.ccx(f[0], a, b)
-        self.x(f[0])
         a, b = self.get_anc(t), self.get_anc(t)
         temporary = OPX
         add = ModularAdder(p, backends=UNITARY)
         neg = ModularNeg(p, backends=UNITARY)
         mul = ModularProductAdd(p, zero_input=True, backends=UNITARY)
         sq = ModularSquareAdd(p, zero_input=True, backends=UNITARY)
-        cmul = ControlledModularProductAdd(p, zero_input=False, backends=UNITARY)
+        cmul = MaskedProductIntoZero(p, borrowed=True)
 
         def plus(src, dst):
             self.append(add, src, dst)
@@ -162,12 +149,12 @@ class BonnetainPointStep(Circuit):
         self.append(mul, Z, QZ, b)
         plus(a, b)
         self.append(sq, b, temporary)
-        self.append(cmul, f, PZ, temporary, OX)
+        self.append(cmul, f, PZ, temporary, OX, OPZ)
         self.append(sq.inverse(), b, temporary)
         minus(a, b)
         minus(a, b)
         self.append(sq, b, temporary)
-        self.append(cmul, f, PX, temporary, OZ)
+        self.append(cmul, f, PX, temporary, OZ, OPZ)
         self.append(sq.inverse(), b, temporary)
         plus(a, b)
         self.append(mul.inverse(), Z, QZ, b)
@@ -178,6 +165,11 @@ class BonnetainPointStep(Circuit):
         self.append(neg, Z)
         plus(X, Z)
         self.release_anc(a, b)
+        self.x(f[0])
+        for src, target in [(X, OX), (Z, OZ)]:
+            for a, b in zip(src, target):
+                self.ccx(f[0], a, b)
+        self.x(f[0])
         for old, current, target in [(PX, X, OPX), (PZ, Z, OPZ)]:
             self.cx_reg(old, target)
             for a, b, c in zip(old, current, target):

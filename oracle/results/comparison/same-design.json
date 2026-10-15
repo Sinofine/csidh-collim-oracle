@@ -4,19 +4,19 @@
       "design": "bonnetain",
       "qubits": 44351,
       "clean": 42441,
-      "ccx": 3174391872613000,
-      "ccx_7T_only": 22220743108291000,
+      "ccx": 3159759945292600,
+      "ccx_7T_only": 22118319617048200,
       "ccx_change_from_bonnetain": 0,
       "ccx_change_percent": 0.0
     },
     {
       "design": "revised",
-      "qubits": 42309,
-      "clean": 40399,
-      "ccx": 3177105457143800,
-      "ccx_7T_only": 22239738200006600,
-      "ccx_change_from_bonnetain": 2713584530800,
-      "ccx_change_percent": 0.0854836025196315
+      "qubits": 42814,
+      "clean": 40904,
+      "ccx": 3055649556172200,
+      "ccx_7T_only": 21389546893205400,
+      "ccx_change_from_bonnetain": -104110389120400,
+      "ccx_change_percent": -3.2948828684123077
     }
   ],
   "paper_model": {
