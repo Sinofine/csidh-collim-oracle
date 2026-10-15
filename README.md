@@ -23,7 +23,7 @@ python scripts/construct_oracle.py --design revised
 python scripts/compare_designs.py
 ```
 
-Recorded results are in `oracle/results/`. The current constructions use 44,351 and 42,814 qubits respectively. They do not yet reproduce the papers' resource estimates; see the [oracle README](oracle/README.md) for the accounting differences.
+Recorded results are in `oracle/results/`. The current constructions use 44,351 and 42,814 qubits respectively. At a per-call phase-synthesis budget of `2^-64`, the compiled logical T counts are 22,118,321,107,669,800 and 21,389,548,383,827,000. Small-field complete-action tests are included. Full 511-bit action correctness and agreement with the paper resource bounds remain unverified; see the [oracle README](oracle/README.md).
 
 ## Haskell sieve
 
@@ -51,4 +51,4 @@ The positional arguments match the Haskell program. The Rust program also accept
 
 ## Sources and licenses
 
-The oracle code follows Bonnetain–Schrottenloher, ePrint 2018/537, and the supplied revised CSIDH manuscript. The Haskell sieve extends Chris Peikert's reference implementation; the Rust sieve is a separate implementation. Both sieve directories retain their BSD-3-Clause licenses and copyright notices. Those licenses do not assign a license to the oracle code. Qarton is an external dependency pinned in `oracle/requirements.txt`.
+The oracle code follows Bonnetain–Schrottenloher, ePrint 2018/537, and the supplied revised CSIDH manuscript. The Haskell sieve extends Chris Peikert's reference implementation; the Rust sieve is a separate implementation. Both sieve directories retain their BSD-3-Clause licenses and copyright notices. Those licenses do not assign a license to the oracle code. The sampler in `oracle/code/exact_angles.py` is adapted from Qarton under AGPL-3.0-or-later, with its notice and license retained in `oracle/`. Qarton and phase-synthesis libraries are pinned external dependencies in `oracle/requirements.txt`.

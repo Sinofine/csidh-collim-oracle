@@ -1,0 +1,33 @@
+{
+  "test": "character_preparation_p59",
+  "input_branches": 2,
+  "output_branches": 116,
+  "squared_state_error": 2.590096618802399e-29,
+  "inverse_squared_state_error": 2.375904216593869e-29,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 525935,
+  "resources": {
+    "qubits": 124,
+    "classical_bits": 0,
+    "ccx": 169716,
+    "native_t": 1188012,
+    "cx": 280479,
+    "unresolved_phase_gates": {
+      "Phase": 19,
+      "CPhase": 66,
+      "GPhase": 3
+    },
+    "ccx_7T_conversion_only": 1188012,
+    "primitives": {
+      "x": 59467,
+      "h": 45,
+      "cx": 280479,
+      "ccx": 169716
+    }
+  },
+  "seconds": 37.36010513899964,
+  "exact_preparation_success": {
+    "3": "24370/24389",
+    "5": "24372/24389"
+  }
+}

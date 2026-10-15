@@ -1,0 +1,29 @@
+{
+  "test": "uniform_p11",
+  "input_branches": 1,
+  "output_branches": 10,
+  "squared_state_error": 2.9967469934665393e-30,
+  "inverse_squared_state_error": 1.67632942359465e-30,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 125,
+  "resources": {
+    "qubits": 14,
+    "classical_bits": 0,
+    "ccx": 30,
+    "native_t": 210,
+    "cx": 55,
+    "unresolved_phase_gates": {
+      "Phase": 3,
+      "CPhase": 8,
+      "GPhase": 1
+    },
+    "ccx_7T_conversion_only": 210,
+    "primitives": {
+      "x": 21,
+      "h": 7,
+      "cx": 55,
+      "ccx": 30
+    }
+  },
+  "seconds": 0.00431082199793309
+}

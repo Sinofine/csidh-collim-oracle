@@ -33,7 +33,35 @@ Construction counts circuit resources without simulating a quantum state. Result
 | Bonnetain | 44,351 | 3,159,759,945,292,600 |
 | Revised | 42,814 | 3,055,649,556,172,200 |
 
-Qubit totals include the 1,910-bit interface. Six classical bits are reported separately. The JSON files also report `7 * CCX`; this conversion excludes synthesis of the remaining phase operations.
+Qubit totals include the 1,910-bit interface. Six classical bits are reported separately. These CCX counts precede phase lowering. Complete logical T counts at a specified synthesis precision are given below.
+
+## Clifford+T synthesis
+
+Angles are kept as rational multiples of pi, acos of a rational, or acos of a square root of a rational. The saved catalogue contains actual Clifford+T words for 586 positive targets; negative angles use inverse words. Arb independently bounds each word's error.
+
+```bash
+# Check the saved words, without rerunning the synthesis search
+python scripts/synthesize_phases.py --verify-only
+
+# Construct phase-lowered circuits using reusable clean scratch
+python scripts/construct_clifford_t.py --design bonnetain
+python scripts/construct_clifford_t.py --design revised
+python scripts/check_phase_counts.py
+
+# Regenerate words with a chosen per-call synthesis budget
+python scripts/synthesize_phases.py --budget-bits 64
+```
+
+Regenerating the catalogue requires the two analytic resource results from the preceding section. Rebuild both compiled circuits after changing the budget. The default `one_clean_ancilla` policy chooses between an AND–phase–uncompute gadget and a three-phase decomposition; `--policy ancilla_free` selects the latter throughout.
+
+| Construction | Total qubits | Logical T gates, 64-bit budget |
+|---|---:|---:|
+| Bonnetain | 44,351 | 22,118,321,107,669,800 |
+| Revised | 42,814 | 21,389,548,383,827,000 |
+
+The recommended policy adds 1,490,621,600 T gates to each arithmetic count. Every remaining CCX macro is charged an exactly checked seven-T decomposition. No Phase, CPhase or GPhase primitives remain. These are circuit-construction counts; the macros are not expanded into a flat list of roughly 10^16 operations.
+
+The synthesis contribution to the unconditioned per-call channel distance is bounded by `202571200 * 2^-93 < 2^-64`. This is relative to the analytic-angle circuit, including its classical success/failure output. It is not a bound for the normalized postselected state or the whole attack. Global phases are dropped only after quantum controls have been resolved. A quantum-controlled wrapper around the compiled circuit would need to retain its phase convention.
 
 ## Code
 
@@ -42,6 +70,8 @@ Qubit totals include the 1,910-bit interface. Six classical bits are reported se
 - `code/ladder.py`, `preparation.py`, `conversion.py`, `group_action.py`: cofactor multiplication, point preparation, coordinate conversion, and action composition.
 - `code/arithmetic.py`, `expressions.py`, `schedules.py`: arithmetic selection, field expressions, and reversible schedules.
 - `code/parameters.py`, `resources.py`, `utils.py`, `reference.py`: parameters, counting, controls, and classical ladder callbacks.
+- `code/exact_angles.py`, `phase_certificates.py`, `phase_lowering.py`: analytic angles, rigorous word checks, and phase decomposition.
+- `code/qarton_compat.py`: repairs hash-based BitVector equality in the pinned Qarton version.
 - `scripts/`: construction, comparison, and verification commands.
 - `results/`: recorded resource counts and formula checks.
 - `tests/`: native coherent component tests and an independent affine reference.
@@ -55,6 +85,10 @@ python scripts/check_resources.py --result results/reference/oracle.json
 python scripts/check_resources.py --result results/bonnetain/oracle.json
 python scripts/check_design_formulas.py
 python tests/test_components.py
+python tests/run_complete.py --jobs 2
+python tests/test_selector.py
+python tests/test_phases.py
+python tests/test_preparation_probability.py
 ```
 
 The first two commands check resource accounting. The formula check compares the two isogeny expressions on small classical curves; it does not verify the complete quantum circuit.
@@ -79,6 +113,10 @@ The revised construction uses 1,537 fewer qubits and 3.29488% fewer CCX gates th
 - Both differential point steps make 10 multiplication/square calls including cleanup and masked outputs. Neither currently matches the paper's `7 TM` step estimate. The Edwards step shares two products between its output coordinates; their common factor of four does not change the projective point. Per out-of-place action, character computation saves 39,934,240,416 CCX and local mapping saves 108,216,938 CCX. These savings are charged over 2600 calls.
 - The ladder implements the listed 16 multiplication/square operations; the lemma states 15. The cofactor scalar uses 511 bits while the reference chain has 512 steps.
 - The shared local traversal does not yet reproduce the original `B(m+1,s)` versus revised `B(m,s)` accounting. Register lifetimes and the cited arithmetic workspace bounds also remain to be reconciled.
-- Preparation returns a classical success flag. Failure handling, successful-branch amplitudes, exceptional points, zero denominators, and complete cleanup require full-circuit verification. Character phase and controlled Boolean-flag costs are not interchangeable.
+- Preparation returns a classical success flag. Small-field tests verify selected conditioned success amplitudes and failure paths, rather than an exactly unitary action on all branches. Exceptional inputs and full-parameter composition still require further verification. Character phase and controlled Boolean-flag costs are not interchangeable.
 
-The current results establish construction and resource counts. Small-field formula checks cover 72 valid odd-prime-order kernels over fields of size 11, 19, and 59. The native component suite covers 13 tests and 436 coherent branches. Full-oracle quantum functionality and synthesis of the remaining phase gates have not been verified.
+The current results establish construction and resource counts. Small-field formula checks cover 72 valid odd-prime-order kernels over fields of size 11, 19, and 59. The native component suite covers 13 tests and 436 coherent branches. The complete small-field suite checks 20 cases, including selected success paths and seven failure paths. The 511-bit selector is tested on 162 coherent inputs. Full 511-bit action correctness and exhaustive measurement-history coverage remain unverified.
+
+## Attribution
+
+The sampling and rotation topology in `code/exact_angles.py` is adapted from Qarton under AGPL-3.0-or-later. The original notice is retained in that file and the license is in `licenses/Qarton_LICENSE.md`. Qarton and the synthesis libraries remain external dependencies.

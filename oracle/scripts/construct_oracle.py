@@ -117,7 +117,18 @@ def construct(output, design="revised", gate_audit=False):
                 "unresolved_direct_names": missing,
                 "class_counts": ResourceReporter(parent).sub_circuits_by_class(),
             }
+    phase_ledger = []
+    for name, quantity in sorted(
+        circuit.get_sub_circuits_counter()._count_by_name.items()
+    ):
+        if isinstance(name, str) and name.startswith(("Phase_", "CPhase_", "GPhase_")):
+            cls, angle = name.split("_", 1)
+            assert quantity == int(quantity)
+            phase_ledger.append(
+                {"class": cls, "angle_key": angle, "count": int(quantity)}
+            )
     result = {
+        "phase_ledger": phase_ledger,
         "design": design,
         "parameters": {"n": 511, "s": 15, "M": 1300, "window": 5},
         "resources": resources,

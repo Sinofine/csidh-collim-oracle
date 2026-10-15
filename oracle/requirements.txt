@@ -1,3 +1,7 @@
 # Python >= 3.12; tested Qarton 1.0.2 revision.
 # This revision reproduces the prior 511-bit baseline resources exactly.
 qarton @ git+https://gitlab.inria.fr/capsule/qarton.git@8c305f659e7fd90725d3823e3171d6b0731e251b
+mpmath==1.3.0
+pygridsynth==1.2.0
+python-flint==0.8.0
+sympy==1.14.0

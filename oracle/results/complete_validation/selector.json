@@ -1,0 +1,28 @@
+{
+  "test": "selector_p59_M2",
+  "input_branches": 48,
+  "output_branches": 48,
+  "squared_state_error": 9.31562881933435e-30,
+  "inverse_squared_state_error": 9.31562881933435e-30,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 104,
+  "resources": {
+    "qubits": 26,
+    "classical_bits": 0,
+    "ccx": 28,
+    "native_t": 196,
+    "cx": 48,
+    "unresolved_phase_gates": {
+      "Phase": 0,
+      "CPhase": 0,
+      "GPhase": 0
+    },
+    "ccx_7T_conversion_only": 196,
+    "primitives": {
+      "ccx": 28,
+      "cx": 48,
+      "x": 28
+    }
+  },
+  "seconds": 0.006388838999555446
+}

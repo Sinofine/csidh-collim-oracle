@@ -1,0 +1,367 @@
+{
+  "test": "group_p59_M1",
+  "input_branches": 2,
+  "measurement_trace": [
+    {
+      "outcomes": [
+        [
+          1,
+          0.9999999999999999
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          0.00023781212841855021
+        ],
+        [
+          1,
+          0.9997621878715729
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.9997621878715814
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          0.00047573739295908856
+        ],
+        [
+          1,
+          0.9995242626070411
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.9995242626070409
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0000000000000004
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          0.9992865646914539
+        ],
+        [
+          0,
+          0.0007134353085377258
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.9992865646914623
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          0.9997621921783385
+        ],
+        [
+          0,
+          0.0002378078216529283
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.999762192178347
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          0.0004757395448047411
+        ],
+        [
+          1,
+          0.9995242604551956
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.9995242604551952
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          0.9999999999999999
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          0.0007134331552609547
+        ],
+        [
+          1,
+          0.9992865668447308
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.999286566844739
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    }
+  ],
+  "path_probability": 0.9971493134018375,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 6577476,
+  "resources": {
+    "qubits": 207,
+    "classical_bits": 6,
+    "ccx": 2121050,
+    "native_t": 14847350,
+    "cx": 3503526,
+    "unresolved_phase_gates": {
+      "Phase": 80,
+      "CPhase": 264,
+      "GPhase": 12
+    },
+    "ccx_7T_conversion_only": 14847350,
+    "primitives": {
+      "cx": 3503526,
+      "x": 734743,
+      "msr": 31,
+      "ccx": 2121050,
+      "h": 180
+    }
+  },
+  "seconds": 189.65427174599608,
+  "squared_state_error": 3.7151188627229784e-31,
+  "ideal_action_conditional_trace_distance": 6.564856867608694e-05,
+  "predicted_success_probability": 0.9971493134018379
+}

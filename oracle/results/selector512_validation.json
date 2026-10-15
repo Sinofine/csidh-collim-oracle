@@ -1,0 +1,36 @@
+{
+  "test": "selector_511_bits_74_primes_M1300",
+  "input_branches": 162,
+  "output_branches": 162,
+  "squared_state_error": 2.726436655757735e-29,
+  "inverse_squared_state_error": 2.726436655757735e-29,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 56454,
+  "resources": {
+    "qubits": 2246,
+    "classical_bits": 0,
+    "ccx": 9208,
+    "native_t": 64456,
+    "cx": 40529,
+    "unresolved_phase_gates": {
+      "Phase": 0,
+      "CPhase": 0,
+      "GPhase": 0
+    },
+    "ccx_7T_conversion_only": 64456,
+    "primitives": {
+      "ccx": 9208,
+      "cx": 40529,
+      "x": 6717
+    }
+  },
+  "seconds": 5.257303937993129,
+  "bitvector_collision_regression": {
+    "shift": 61,
+    "distinct_states_preserved": true,
+    "collision_pair": [
+      "1",
+      "2305843009213693952"
+    ]
+  }
+}

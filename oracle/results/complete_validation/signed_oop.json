@@ -1,0 +1,134 @@
+{
+  "test": "signed_oop_compute_and_erase_p11",
+  "input_branches": 20,
+  "squared_state_error": 3.860613842224819e-30,
+  "nonzero_workspace_probability": 0,
+  "success_probability": 0.9525759999999999,
+  "exact_success_probability": "14884/15625",
+  "measurement_trace": [
+    {
+      "outcomes": [
+        [
+          1,
+          0.9919999999999964
+        ],
+        [
+          0,
+          0.007999999999999988
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.992
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          0.9838709677419356
+        ],
+        [
+          0,
+          0.016129032258064512
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.9838709677419354
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          0.9759999999999964
+        ],
+        [
+          0,
+          0.023999999999999945
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 0.976
+    },
+    {
+      "outcomes": [
+        [
+          1,
+          1.0000000000000002
+        ]
+      ],
+      "selected": 1,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0000000000000002
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0000000000000002
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0000000000000002
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    },
+    {
+      "outcomes": [
+        [
+          0,
+          1.0000000000000002
+        ]
+      ],
+      "selected": 0,
+      "conditional_probability": 1.0
+    }
+  ],
+  "basic_operations": 922528,
+  "resources": {
+    "qubits": 105,
+    "classical_bits": 4,
+    "ccx": 293269,
+    "native_t": 2052883,
+    "cx": 482546,
+    "unresolved_phase_gates": {
+      "Phase": 23,
+      "CPhase": 48,
+      "GPhase": 6
+    },
+    "ccx_7T_conversion_only": 2052883,
+    "primitives": {
+      "cx": 482546,
+      "x": 121513,
+      "ccx": 293269,
+      "h": 42,
+      "msr": 9
+    }
+  },
+  "seconds": 44.56378054099332
+}

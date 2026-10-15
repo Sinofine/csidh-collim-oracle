@@ -1,5 +1,9 @@
 """Unitary arithmetic backend selection."""
 
+from qarton_compat import install_bitvector_equality_fix
+
+install_bitvector_equality_fix()
+
 from qarton.arithmetic.comparator_adder import CDKMComparatorAdder
 from qarton.arithmetic.controlled_adder import ControlledCDKMAdder
 from qarton.binary_operations.and_ccx import AndGate, AndGateDecomposed, FakeAndGate

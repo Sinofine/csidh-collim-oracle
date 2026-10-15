@@ -1,6 +1,6 @@
 """Point sampling, character tests, and amplitude amplification."""
 
-import math
+from exact_angles import Angle, append_uniform_sample
 
 from character import UnitaryPositiveCharacterFlag, append_chain
 from expressions import Expr
@@ -10,7 +10,6 @@ from qarton.arithmetic import qc_eq_uint
 from qarton.binary_operations import qc_eq
 from qarton.circuit import BoolType, Circuit, UInt, UIntType, memoize, qc_reg_cast
 from qarton.modular_arithmetic import ModInt, ModIntType, ModularAdderConstant
-from qarton.modular_arithmetic.uniform_sample import UniformSample
 from utils import SetFlag
 
 
@@ -23,7 +22,7 @@ class PaperDegreePhase(Circuit):
         equal = self.get_anc(BoolType())
         both = self.get_anc(BoolType())
         for l in primes:
-            angle = math.acos(-1 / (l - 1))  # g=(1-1/l)/2; cos gamma=1-1/(2g)
+            angle = Angle("acos", -1, l - 1)  # g=(1-1/l)/2; cos gamma=1-1/(2g)
             qc_eq_uint(UInt(l), ell, equal)
             self.ccx(equal[0], f[0], both[0])
             self.phase(angle, both[0])
@@ -38,10 +37,7 @@ class UnitaryNonzeroUniform(Circuit):
         super().__init__()
         raw = self.add_input_output(UIntType(p.bit_length()))
         x = qc_reg_cast(raw, ModIntType(p))
-        u = UniformSample(p - 1, backends=UNITARY)
-        assert u.nbr_qubits() == p.bit_length() and u.nbr_cbits() == 0
-        for operation in u.iterate_operations():
-            self.append_operation(operation)
+        append_uniform_sample(self, raw, p - 1)
         self.append(ModularAdderConstant(p, ModInt(1, p), backends=UNITARY), x)
 
 

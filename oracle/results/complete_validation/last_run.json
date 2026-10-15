@@ -1,0 +1,104 @@
+{
+  "runs": [
+    {
+      "case": "uniform59",
+      "returncode": 0,
+      "seconds": 0.47947954399569426
+    },
+    {
+      "case": "uniform11",
+      "returncode": 0,
+      "seconds": 0.49064752299454994
+    },
+    {
+      "case": "phase11_character",
+      "returncode": 0,
+      "seconds": 4.908824646990979
+    },
+    {
+      "case": "phase11_cofactor",
+      "returncode": 0,
+      "seconds": 7.690751218004152
+    },
+    {
+      "case": "prepare11_character",
+      "returncode": 0,
+      "seconds": 4.752249031007523
+    },
+    {
+      "case": "prepare11_cofactor",
+      "returncode": 0,
+      "seconds": 7.992734660001588
+    },
+    {
+      "case": "prepare59_character",
+      "returncode": 0,
+      "seconds": 37.86054600500211
+    },
+    {
+      "case": "selector",
+      "returncode": 0,
+      "seconds": 0.40521068099769764
+    },
+    {
+      "case": "prepare59_cofactor",
+      "returncode": 0,
+      "seconds": 68.62671890700585
+    },
+    {
+      "case": "signed_oop",
+      "returncode": 0,
+      "seconds": 45.15872243400372
+    },
+    {
+      "case": "group11_M1",
+      "returncode": 0,
+      "seconds": 47.857704055000795
+    },
+    {
+      "case": "group11_M2",
+      "returncode": 0,
+      "seconds": 104.22926400999131
+    },
+    {
+      "case": "failure0",
+      "returncode": 0,
+      "seconds": 4.570602687992505
+    },
+    {
+      "case": "failure1",
+      "returncode": 0,
+      "seconds": 4.613092166007846
+    },
+    {
+      "case": "failure2",
+      "returncode": 0,
+      "seconds": 8.52399149601115
+    },
+    {
+      "case": "failure3",
+      "returncode": 0,
+      "seconds": 12.191411405990948
+    },
+    {
+      "case": "failure4",
+      "returncode": 0,
+      "seconds": 12.168939060997218
+    },
+    {
+      "case": "failure5",
+      "returncode": 0,
+      "seconds": 15.89513051699032
+    },
+    {
+      "case": "failure_mid_chain",
+      "returncode": 0,
+      "seconds": 20.068146890989738
+    },
+    {
+      "case": "group59_M1",
+      "returncode": 0,
+      "seconds": 190.2689254690049
+    }
+  ]
+}

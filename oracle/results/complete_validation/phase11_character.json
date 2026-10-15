@@ -1,0 +1,28 @@
+{
+  "test": "character_good_phase_p11",
+  "input_branches": 30,
+  "output_branches": 30,
+  "squared_state_error": 4.80640794525801e-30,
+  "inverse_squared_state_error": 5.087606506517083e-30,
+  "nonzero_workspace_probability": 0,
+  "basic_operations": 154273,
+  "resources": {
+    "qubits": 85,
+    "classical_bits": 0,
+    "ccx": 49130,
+    "native_t": 343910,
+    "cx": 80868,
+    "unresolved_phase_gates": {
+      "Phase": 1,
+      "CPhase": 0,
+      "GPhase": 0
+    },
+    "ccx_7T_conversion_only": 343910,
+    "primitives": {
+      "cx": 80868,
+      "ccx": 49130,
+      "x": 20410
+    }
+  },
+  "seconds": 4.345296234008856
+}

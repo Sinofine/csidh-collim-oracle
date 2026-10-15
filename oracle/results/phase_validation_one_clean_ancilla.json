@@ -1,0 +1,179 @@
+{
+  "policy": "one_clean_ancilla",
+  "arb": {
+    "controlled_isometries_checked": 512,
+    "maximum_frobenius_upper_display": "[5.66387420630420e-29 +/- 3.47e-44]"
+  },
+  "native_gadgets": [
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"acos_sqrt\",1,1007240507576784310830567397931,-2,1]",
+      "method": "and_phase_uncompute",
+      "squared_state_error_up_to_global_phase": 8.058658163931072e-28,
+      "quantum_workspace_nonzero_probability": 1e-30
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"acos_sqrt\",1,1007240507576784310830567397931,2,1]",
+      "method": "and_phase_uncompute",
+      "squared_state_error_up_to_global_phase": 7.609548423525747e-28,
+      "quantum_workspace_nonzero_probability": 4e-30
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"acos_sqrt\",1,101160818208991903553143569693590479332921456641130127598998027377217699093800623323056847,-2,1]",
+      "method": "three_phase_two_cx",
+      "squared_state_error_up_to_global_phase": 8.95364831145626e-31,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"acos_sqrt\",1,101160818208991903553143569693590479332921456641130127598998027377217699093800623323056847,2,1]",
+      "method": "three_phase_two_cx",
+      "squared_state_error_up_to_global_phase": 8.590129034453169e-31,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"pi\",0,1,-1,2]",
+      "method": "three_phase_two_cx",
+      "squared_state_error_up_to_global_phase": 8.95364831145626e-31,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"pi\",0,1,-1,4]",
+      "method": "and_phase_uncompute",
+      "squared_state_error_up_to_global_phase": 1.143424607982702e-30,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"pi\",0,1,1,2]",
+      "method": "three_phase_two_cx",
+      "squared_state_error_up_to_global_phase": 8.590129034453169e-31,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "CPhase",
+      "angle_key": "A[\"pi\",0,1,1,4]",
+      "method": "and_phase_uncompute",
+      "squared_state_error_up_to_global_phase": 1.0057687652076242e-30,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"acos\",-1,10,-1,1]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 6.736810500829221e-28,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"acos\",-1,10,1,1]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 7.553930576124226e-28,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"acos_sqrt\",1,1007240507576784310830567397931,-1,1]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 7.269124055948242e-28,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"acos_sqrt\",1,1007240507576784310830567397931,1,1]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 7.770667028345787e-28,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"pi\",0,1,-1,2]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 6.240013019814644e-32,
+      "quantum_workspace_nonzero_probability": 0
+    },
+    {
+      "gate_class": "Phase",
+      "angle_key": "A[\"pi\",0,1,1,2]",
+      "method": "single",
+      "squared_state_error_up_to_global_phase": 5.238529448733282e-32,
+      "quantum_workspace_nonzero_probability": 0
+    }
+  ],
+  "toffoli": {
+    "exact_symbolic_matrix_verified": true,
+    "T_count": 7,
+    "chronological_schedule": [
+      [
+        "h",
+        2
+      ],
+      [
+        "cx",
+        1,
+        2
+      ],
+      [
+        "tdg",
+        2
+      ],
+      [
+        "cx",
+        0,
+        2
+      ],
+      [
+        "t",
+        2
+      ],
+      [
+        "cx",
+        1,
+        2
+      ],
+      [
+        "tdg",
+        2
+      ],
+      [
+        "cx",
+        0,
+        2
+      ],
+      [
+        "t",
+        1
+      ],
+      [
+        "t",
+        2
+      ],
+      [
+        "h",
+        2
+      ],
+      [
+        "cx",
+        0,
+        1
+      ],
+      [
+        "t",
+        0
+      ],
+      [
+        "tdg",
+        1
+      ],
+      [
+        "cx",
+        0,
+        1
+      ]
+    ]
+  }
+}
